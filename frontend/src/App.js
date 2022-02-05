@@ -5,6 +5,7 @@ import { getInvestments } from './api/investments';
 import { getUser } from './api/users';
 import OtherInvestments from './components/OtherInvestments';
 import CurrentPortfolio from './components/CurrentPortfolio';
+import AssetTransaction from './components/AssetTransaction';
 
 const App = () => {
   const [user, setUser] = useState(null);
@@ -75,7 +76,17 @@ const App = () => {
         />
       </div>
       <div style={{ display: 'flex', justifyContent: 'center' }}>
-        <CurrentPortfolio user={user} allInvestments={allInvestments} />
+        {selectedInvest ? (
+          <AssetTransaction
+            user={user}
+            setUser={setUser}
+            selectedInvest={selectedInvest}
+            setSelectedInvest={onSetSelectedInvest}
+            allInvestments={allInvestments}
+          />
+        ) : (
+          <CurrentPortfolio user={user} allInvestments={allInvestments} />
+        )}
       </div>
     </div>
   );
