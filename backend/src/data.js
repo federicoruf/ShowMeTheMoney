@@ -1,3 +1,36 @@
+exports.INVESTMENT_DATA = [
+  {
+    name: 'Coca Cola',
+    type: 'Acciones',
+    unitPrice: '100',
+  },
+  {
+    name: 'Amazon',
+    type: 'Acciones',
+    unitPrice: '200',
+  },
+  {
+    name: 'Apple',
+    type: 'Acciones',
+    unitPrice: '400',
+  },
+  {
+    name: 'A42',
+    type: 'Bonos',
+    unitPrice: '10',
+  },
+  {
+    name: 'B22',
+    type: 'Bonos',
+    unitPrice: '50',
+  },
+  {
+    name: 'C12',
+    type: 'Bonos',
+    unitPrice: '50',
+  },
+];
+
 exports.USERS_DATA = [
   {
     name: 'Mark',

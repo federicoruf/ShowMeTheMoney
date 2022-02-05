@@ -1,8 +1,10 @@
 require('./models/User');
+require('./models/Investment');
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const userRoutes = require('./routes/userRoutes');
+const investmentRoutes = require('./routes/investmentRoutes');
 
 const app = express();
 
@@ -18,6 +20,7 @@ app.use((req, res, next) => {
 
 app.use(bodyParser.json());
 app.use(userRoutes);
+app.use(investmentRoutes);
 
 //UPDATE MONGO DB URI
 const monogoUri =
