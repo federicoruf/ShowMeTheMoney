@@ -10,6 +10,7 @@ const App = () => {
   const [user, setUser] = useState(null);
   const [otherInvestments, setOtherInvestments] = useState(null);
   const [allInvestments, setAllInvestments] = useState(new Map());
+  const [selectedInvest, setSelectedInvest] = useState();
 
   const fetchUser = async (name) => {
     const userData = await getUser(name);
@@ -44,6 +45,16 @@ const App = () => {
     fetchInvestments();
   }, [user && user.investments]);
 
+  const onSetSelectedInvest = (investment) => {
+    if (investment) {
+      const { name } = investment;
+      const { unitPrice } = allInvestments.get(name);
+      setSelectedInvest({ ...investment, unitPrice });
+    } else {
+      setSelectedInvest(null);
+    }
+  };
+
   if (!user || !otherInvestments) {
     return <div>Cargando...</div>;
   }
@@ -52,8 +63,16 @@ const App = () => {
     <div>
       <h1>Show me the money!</h1>
       <div style={{ display: 'flex', justifyContent: 'space-around' }}>
-        <CurrentInvestments user={user} />
-        <OtherInvestments otherInvestments={otherInvestments} />
+        <CurrentInvestments
+          user={user}
+          selectedInvest={selectedInvest}
+          setSelectedInvest={onSetSelectedInvest}
+        />
+        <OtherInvestments
+          otherInvestments={otherInvestments}
+          selectedInvest={selectedInvest}
+          setSelectedInvest={onSetSelectedInvest}
+        />
       </div>
       <div style={{ display: 'flex', justifyContent: 'center' }}>
         <CurrentPortfolio user={user} allInvestments={allInvestments} />
