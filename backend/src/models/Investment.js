@@ -16,4 +16,4 @@ const investmentSchema = new mongoose.Schema({
   },
 });
 
-mongoose.model('Investment', investmentSchema);
+module.exports = mongoose.model('Investment', investmentSchema);

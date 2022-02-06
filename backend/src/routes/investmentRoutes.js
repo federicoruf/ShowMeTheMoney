@@ -11,8 +11,17 @@ router.get('/investments', async (req, res) => {
 });
 
 router.get('/create-investments', async (req, res) => {
-  for (const investment of INVESTMENT_DATA) {
-    await Investment.create(investment);
+  try {
+    await Investment.remove({});
+    for (const investment of INVESTMENT_DATA) {
+      const newTnvestment = new Investment(investment);
+      await newTnvestment.save();
+    }
+  } catch (err) {
+    console.log(
+      'Error al intentar actualizar las inversiones del usuario',
+      err
+    );
   }
   res.send('finish');
 });
