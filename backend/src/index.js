@@ -1,5 +1,6 @@
 require('./models/User');
 require('./models/Investment');
+require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
@@ -23,8 +24,7 @@ app.use(userRoutes);
 app.use(investmentRoutes);
 
 //UPDATE MONGO DB URI
-const monogoUri =
-  'mongodb+srv://admin:password12345@cluster0.88ugq.mongodb.net/showMeTheMoney';
+const monogoUri = process.env.MONGO_URI;
 
 mongoose.connect(monogoUri);
 
@@ -37,8 +37,8 @@ mongoose.connection.on('error', (err) => {
 
 app.use(function (err, req, res, next) {
   if (!err) return next();
-  console.log('error!!!');
-  res.send('error!!!');
+  console.log('error!!!', err);
+  res.send('error!!!', err);
 });
 
 app.listen(3000, () => {
