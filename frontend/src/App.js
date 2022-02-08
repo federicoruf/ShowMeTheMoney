@@ -12,10 +12,18 @@ const App = () => {
   const [otherInvestments, setOtherInvestments] = useState(null);
   const [allInvestments, setAllInvestments] = useState(new Map());
   const [selectedInvest, setSelectedInvest] = useState();
+  const [errorMesssage, setErrorMessage] = useState(null);
 
   const fetchUser = async (name) => {
     const userData = await getUser(name);
-    setUser(userData);
+    if (!userData) {
+      setErrorMessage(
+        'Ocurrio un error al intentar recuperar los datos del usuario'
+      );
+    } else {
+      setErrorMessage(null);
+      setUser(userData);
+    }
   };
 
   const fetchInvestments = async () => {
@@ -55,6 +63,10 @@ const App = () => {
       setSelectedInvest(null);
     }
   };
+
+  if (errorMesssage) {
+    return <h1>{errorMesssage}</h1>;
+  }
 
   if (!user || !otherInvestments) {
     return <div>Cargando...</div>;

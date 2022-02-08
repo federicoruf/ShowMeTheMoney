@@ -37,8 +37,8 @@ mongoose.connection.on('error', (err) => {
 
 app.use(function (err, req, res, next) {
   if (!err) return next();
-  console.log('error!!!', err);
-  res.send('error!!!', err);
+  console.log('error', err.message);
+  res.status(err.statusCode).send(err.message);
 });
 
 app.listen(3000, () => {

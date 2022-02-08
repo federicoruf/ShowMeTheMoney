@@ -3,6 +3,11 @@ const User = mongoose.model('User');
 
 exports.getUser = async (name, next) => {
   const [userAccount] = await User.find({ name });
+  if (!userAccount) {
+    const error = new Error('No se encontró al usuario');
+    error.statusCode = 500;
+    next(error);
+  }
   return userAccount;
 };
 
