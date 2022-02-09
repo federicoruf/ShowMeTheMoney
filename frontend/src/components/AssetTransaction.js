@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { removeUserInvestment, updateUserInvestment } from '../api/users';
+import PropTypes from 'prop-types';
 
 const AssetTransaction = ({
   user,
@@ -97,6 +98,29 @@ const AssetTransaction = ({
       </div>
     </div>
   );
+};
+
+AssetTransaction.propTypes = {
+  user: PropTypes.shape({
+    investments: PropTypes.arrayOf(
+      PropTypes.shape({
+        name: PropTypes.string.isRequired,
+        type: PropTypes.string.isRequired,
+        units: PropTypes.number.isRequired,
+        _id: PropTypes.string.isRequired,
+      })
+    ),
+    name: PropTypes.string.isRequired,
+    savings: PropTypes.number.isRequired,
+  }),
+  selectedInvest: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    type: PropTypes.string.isRequired,
+    units: PropTypes.number,
+    _id: PropTypes.string.isRequired,
+  }),
+  setSelectedInvest: PropTypes.func.isRequired,
+  setUser: PropTypes.func.isRequired,
 };
 
 export default AssetTransaction;

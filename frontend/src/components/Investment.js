@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const Investment = (props) => {
   const { id, handleClickInvestment, selected, children } = props;
@@ -20,6 +21,15 @@ const Investment = (props) => {
       {children}
     </li>
   );
+};
+
+Investment.propTypes = {
+  children: PropTypes.arrayOf(
+    PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+  ),
+  selected: PropTypes.bool,
+  id: PropTypes.string.isRequired,
+  handleClickInvestment: PropTypes.func.isRequired,
 };
 
 export default Investment;

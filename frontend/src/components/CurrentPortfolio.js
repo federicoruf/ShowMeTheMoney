@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import PieGraph from './PieGraph';
+import PropTypes from 'prop-types';
 
 const CurrentPortfolio = ({ user, allInvestments }) => {
   const { savings, investments } = user;
@@ -38,6 +39,22 @@ const CurrentPortfolio = ({ user, allInvestments }) => {
       <PieGraph graphInvestments={graphInvestments} />
     </div>
   );
+};
+
+CurrentPortfolio.propTypes = {
+  user: PropTypes.shape({
+    investments: PropTypes.arrayOf(
+      PropTypes.shape({
+        name: PropTypes.string.isRequired,
+        type: PropTypes.string.isRequired,
+        units: PropTypes.number.isRequired,
+        _id: PropTypes.string.isRequired,
+      })
+    ),
+    name: PropTypes.string.isRequired,
+    savings: PropTypes.number.isRequired,
+  }),
+  allInvestments: PropTypes.instanceOf(Map).isRequired,
 };
 
 export default CurrentPortfolio;
