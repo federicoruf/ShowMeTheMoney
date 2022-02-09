@@ -2,7 +2,8 @@
 
 ## Prerequisits
 
-Paste .env file inside backend folder. This file got Mongo DB credentials
+1. Paste .env file inside backend folder. This file got Mongo DB credentials.
+2. Run npm install inside both folder (backend and frontend)
 
 ## Running
 
@@ -14,7 +15,8 @@ In the project /frontend directory, you can run:
 
 The page will reload when you make changes.
 
-Open [http://localhost:3005/Mark](http://localhost:3000) to view it in your browser.
+Open [http://localhost:3005/Mark](http://localhost:3000) to view it in your browser. Or [http://localhost:3005/John](http://localhost:3000) 
+This are the only two users on the system
 
 ### Back
 
@@ -28,9 +30,14 @@ The page will reload when you make changes.
 
 ### Updating stocks and bonds values:
 
+You have to udpate the --data-raw parameter, sending always something with this format:
+'{"updates": [{"name": "Stock name1", "unitPrice": integer value}, {"name": "Stock name2", "unitPrice": integer value}, ... ,{"name": "Stock nameN", "unitPrice": integer value}]}'
+
+Example:
+
 curl --location --requestPUT'http://localhost:3000/investments' --header'Content-Type: application/json' --data-raw'{"updates": [{"name": "Amazon", "unitPrice": 1000}]}'
 
 ## Package versions
 
-React
-Node
+React 17.0.2
+Node 16.3.0
