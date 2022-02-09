@@ -12,7 +12,7 @@ const App = () => {
   const [otherInvestments, setOtherInvestments] = useState(null);
   const [allInvestments, setAllInvestments] = useState(new Map());
   const [selectedInvest, setSelectedInvest] = useState();
-  const [errorMesssage, setErrorMessage] = useState(null);
+  const [errorMessage, setErrorMessage] = useState(null);
 
   const fetchUser = async (name) => {
     const userData = await getUser(name);
@@ -64,8 +64,8 @@ const App = () => {
     }
   };
 
-  if (errorMesssage) {
-    return <h1>{errorMesssage}</h1>;
+  if (errorMessage) {
+    return <h1>{errorMessage}</h1>;
   }
 
   if (!user || !otherInvestments) {
