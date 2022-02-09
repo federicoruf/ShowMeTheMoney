@@ -2,7 +2,7 @@
 
 ## Prerequisits
 
-Paste .env file inside frontend folder. This file got Mongo DB key
+Paste .env file inside backend folder. This file got Mongo DB credentials
 
 ## Running
 
@@ -14,7 +14,7 @@ In the project /frontend directory, you can run:
 
 The page will reload when you make changes.
 
-Open [http://localhost:3005/mark](http://localhost:3000) to view it in your browser.
+Open [http://localhost:3005/Mark](http://localhost:3000) to view it in your browser.
 
 ### Back
 
