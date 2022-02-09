@@ -1,21 +1,15 @@
 import React from 'react';
+import useInvestmentSelection from '../hooks/useInvestmentSelection';
 import Investment from './Investment';
 
 const OtherInvestments = (props) => {
   const { otherInvestments, selectedInvest, setSelectedInvest } = props;
 
-  const handleClickInvestment = (id) => {
-    const asset = otherInvestments.find(({ _id }) => _id === id);
-    if (selectedInvest && selectedInvest.name === asset.name) {
-      setSelectedInvest(null);
-    } else {
-      setSelectedInvest({ ...asset });
-    }
-  };
-
-  const isSelected = (name) => {
-    return selectedInvest && selectedInvest.name === name;
-  };
+  const [handleClickInvestment, isSelected] = useInvestmentSelection(
+    otherInvestments,
+    selectedInvest,
+    setSelectedInvest
+  );
 
   return (
     <div>
