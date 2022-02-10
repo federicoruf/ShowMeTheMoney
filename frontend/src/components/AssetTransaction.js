@@ -50,13 +50,20 @@ const AssetTransaction = ({
       setError('No se pueden vender mas unidades de las que se tienen');
     } else {
       setError('');
-      const { _id } = user;
+      const { _id, savings } = user;
       const newUnits = units - +sell;
       let result;
+      const newSavings = savings + selectedInvest.unitPrice * +sell;
       if (newUnits === 0) {
-        result = await removeUserInvestment(_id, name);
+        result = await removeUserInvestment(_id, name, newSavings);
       } else {
-        result = await updateUserInvestment(_id, name, newUnits, type);
+        result = await updateUserInvestment(
+          _id,
+          name,
+          newUnits,
+          type,
+          newSavings
+        );
       }
       setUser(result);
       setSell(0);

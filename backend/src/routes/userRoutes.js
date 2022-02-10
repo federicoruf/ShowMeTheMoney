@@ -39,12 +39,14 @@ router.put('/:userId/invest/:name', async (req, res) => {
   }
 });
 
-router.delete('/:userId/invest/:name', async (req, res) => {
+router.put('/:userId/remove-invest/:name', async (req, res) => {
+  console.log('body ', req.body);
   const {
-    params: { name, userId },
+    params: { userId, name },
+    body: { savings },
   } = req;
   try {
-    const user = await deleteUserInvestment(userId, name);
+    const user = await deleteUserInvestment(userId, name, savings);
     res.send(user);
   } catch (err) {
     console.log(

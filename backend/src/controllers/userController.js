@@ -24,11 +24,16 @@ exports.updateUserInvestments = async (userId, name, type, amount, savings) => {
   return final;
 };
 
-exports.deleteUserInvestment = async (userId, name) => {
+exports.deleteUserInvestment = async (userId, name, savings) => {
   const result = await User.findOne({ _id: userId });
+  const deletedInvestment = result.investments.find(
+    (asset) => asset.name === name
+  );
+
   const newInvestments = result.investments.filter(
     (asset) => asset.name !== name
   );
+  result.savings = savings;
   result.investments = newInvestments;
   const final = await result.save();
   return final;

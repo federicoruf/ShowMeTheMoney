@@ -29,9 +29,13 @@ export const updateUserInvestment = async (id, name, amount, type, savings) => {
   }
 };
 
-export const removeUserInvestment = async (id, name) => {
+export const removeUserInvestment = async (id, name, savings) => {
   try {
-    let response = await axios.delete(`${baseUrl}/${id}/invest/${name}`);
+    const data = { savings };
+    let response = await axios.put(
+      `${baseUrl}/${id}/remove-invest/${name}`,
+      data
+    );
     if (response.status === 200) {
       return response.data;
     }
