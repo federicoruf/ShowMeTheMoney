@@ -34,7 +34,15 @@ You have to udpate the --data-raw parameter, sending always something with this 
 
 Example:
 
-curl --location --requestPUT'http://localhost:3000/investments' --header'Content-Type: application/json' --data-raw'{"updates": [{"name": "Amazon", "unitPrice": 1000}]}'
+curl --location --request PUT 'http://localhost:3000/investments' \
+
+--header 'Content-Type: application/json' \
+
+--data-raw '{"updates": [
+
+    {"name": "Amazon", "unitPrice": 1000}
+
+]}
 
 ## Package versions
 
