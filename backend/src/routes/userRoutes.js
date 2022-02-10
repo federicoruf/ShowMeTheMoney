@@ -40,7 +40,6 @@ router.put('/:userId/invest/:name', async (req, res) => {
 });
 
 router.put('/:userId/remove-invest/:name', async (req, res) => {
-  console.log('body ', req.body);
   const {
     params: { userId, name },
     body: { savings },
