@@ -2,8 +2,7 @@
 
 ## Prerequisits
 
-1. Paste .env file inside backend folder. This file got Mongo DB credentials.
-2. Run npm install inside both folder (backend and frontend)
+1. Run npm install inside both folder (backend and frontend)
 
 ## Running
 
@@ -15,7 +14,7 @@ In the project /frontend directory, you can run:
 
 The page will reload when you make changes.
 
-Open [http://localhost:3005/Mark](http://localhost:3000) to view it in your browser. Or [http://localhost:3005/John](http://localhost:3000) 
+Open [http://localhost:3005/Mark](http://localhost:3000) to view it in your browser. Or [http://localhost:3005/John](http://localhost:3000)
 This are the only two users on the system
 
 ### Back
