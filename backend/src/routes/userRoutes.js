@@ -56,18 +56,4 @@ router.put('/:userId/remove-invest/:name', async (req, res) => {
   }
 });
 
-//to create testing data
-router.get('/create-users', async (req, res) => {
-  await User.remove({});
-  try {
-    for (const user of USERS_DATA) {
-      const newUser = new User(user);
-      await newUser.save();
-    }
-  } catch (err) {
-    console.log('Error al intentar actualizar los usuarios', err);
-  }
-  res.send('finish');
-});
-
 module.exports = router;

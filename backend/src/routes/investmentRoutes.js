@@ -21,20 +21,4 @@ router.put('/investments', async (req, res) => {
   res.status(200).send('acciones y bonos actualizados');
 });
 
-router.get('/create-investments', async (req, res) => {
-  try {
-    await Investment.remove({});
-    for (const investment of INVESTMENT_DATA) {
-      const newTnvestment = new Investment(investment);
-      await newTnvestment.save();
-    }
-  } catch (err) {
-    console.log(
-      'Error al intentar actualizar las inversiones del usuario',
-      err
-    );
-  }
-  res.send('finish');
-});
-
 module.exports = router;
